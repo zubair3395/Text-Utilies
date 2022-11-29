@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import TextArea from './components/TextArea';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { useState } from 'react';
 
 function App() {
+  const [color, setColor ] = useState("dark");
+  function modeLight(){
+    setColor("light");
+  }
+  function modeDark(){
+    setColor("dark");
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div class={`bg-${color=="dark"? "dark" : "light"} text-${color=="dark"? "light" : "dark"}`}>
+  <Navbar modeLight={modeLight} modeDark={modeDark} color={color}/>
+  <TextArea color={color}/>
+  
+  </div>
   );
 }
 
